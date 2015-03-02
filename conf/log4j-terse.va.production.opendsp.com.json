@@ -1,0 +1,472 @@
+{
+    "configuration": {
+        "status": "error",
+        "name": "Lot49",
+        "ThresholdFilter": {
+            "level": "TRACE"
+        },
+        "appenders": {
+            "Console": {
+                "name": "STDERR"
+            },
+            "Routing": {
+                "name": "Routing",
+                "Routes": {
+                    "pattern": "$${ctx:logFileName}",
+                    "Route": [
+                        {
+                            "key": "main",
+                            "RollingFile": {
+                                "PatternLayout": {
+                                    "pattern": "%d %r [%t] %p %c %x - %m%n"
+                                },
+                                "fileName": "/opt/lot49/log/${ctx:logFileName}.log",
+                                "name": "${ctx:logFileName}",
+                                "filePattern": "/opt/lot49/log/rotated/type=${ctx:logFileName}/year=$${date:yyyy}/month=$${date:MM}/day=$${date:dd}/hour=$${date:HH}/${ctx:logFileName}.${env:NODE_ID}.${env:SHORT_REGION}.%d{yyyy-MM-dd-HH}.%i.$${date:mm-ss-SSS}.log.gz",
+                                "Policies": {
+                                    "SizeBasedTriggeringPolicy": {
+                                        "size": "1024 MB"
+                                    },
+                                    "TimeBasedTriggeringPolicy": {
+                                        "interval": "1",
+                                        "modulate": true
+                                    }
+                                },
+                                "DefaultRolloverStrategy" : { "max" : "10000" }
+                            }
+                        },
+                        {
+                            "key": "bid",
+                            "RollingFile": {
+                                "fileName": "/opt/lot49/log/${ctx:logFileName}.log",
+                                "name": "${ctx:logFileName}",
+                                "filePattern": "/opt/lot49/log/rotated/type=${ctx:logFileName}/year=$${date:yyyy}/month=$${date:MM}/day=$${date:dd}/hour=$${date:HH}/${ctx:logFileName}.${env:NODE_ID}.${env:SHORT_REGION}.%d{yyyy-MM-dd-HH-mm}.%i.$${date:mm-ss-SSS}.log.gz",
+                                "DelimLayout": {
+                                    "delimiter": "\t",
+                                    "secondaryDelimiter": ",",
+                                    "nullChar": "-",
+                                    "waitForFutures": false
+                                },
+                                "Policies": {
+                                    "SizeBasedTriggeringPolicy": {
+                                        "size": "1024 MB"
+                                    },
+                                    "TimeBasedTriggeringPolicy": {
+                                        "interval": "10",
+                                        "modulate": true
+                                    }
+                                },
+                                "DefaultRolloverStrategy" : { "max" : "10000" }
+                            }
+                        },
+                        {
+                            "key": "click",
+                            "RollingFile": {
+                                "fileName": "/opt/lot49/log/${ctx:logFileName}.log",
+                                "name": "${ctx:logFileName}",
+                                "filePattern": "/opt/lot49/log/rotated/type=${ctx:logFileName}/year=$${date:yyyy}/month=$${date:MM}/day=$${date:dd}/hour=$${date:HH}/${ctx:logFileName}.${env:NODE_ID}.${env:SHORT_REGION}.%d{yyyy-MM-dd-HH-mm}.%i.$${date:mm-ss-SSS}.log.gz",
+                                "DelimLayout": {
+                                    "delimiter": "\t",
+                                    "secondaryDelimiter": ",",
+                                    "nullChar": "-",
+                                    "waitForFutures": false
+                                },
+                                "Policies": {
+                                    "SizeBasedTriggeringPolicy": {
+                                        "size": "1024 MB"
+                                    },
+                                    "TimeBasedTriggeringPolicy": {
+                                        "interval": "10",
+                                        "modulate": true
+                                    }
+                                },
+                                "DefaultRolloverStrategy" : { "max" : "10000" }
+                            }
+                        },
+                        {
+                            "key": "impression",
+                            "RollingFile": {
+                                "fileName": "/opt/lot49/log/${ctx:logFileName}.log",
+                                "name": "${ctx:logFileName}",
+                                "filePattern": "/opt/lot49/log/rotated/type=${ctx:logFileName}/year=$${date:yyyy}/month=$${date:MM}/day=$${date:dd}/hour=$${date:HH}/${ctx:logFileName}.${env:NODE_ID}.${env:SHORT_REGION}.%d{yyyy-MM-dd-HH-mm}.%i.$${date:mm-ss-SSS}.log.gz",
+                                "DelimLayout": {
+                                    "delimiter": "\t",
+                                    "secondaryDelimiter": ",",
+                                    "nullChar": "-",
+                                    "waitForFutures": false
+                                },
+                                "Policies": {
+                                    "SizeBasedTriggeringPolicy": {
+                                        "size": "1024 MB"
+                                    },
+                                    "TimeBasedTriggeringPolicy": {
+                                        "interval": "10",
+                                        "modulate": true
+                                    }
+                                },
+                                "DefaultRolloverStrategy" : { "max" : "10000" }
+                            }
+                        },
+                        {
+                            "key": "session",
+                            "RollingFile": {
+                                "fileName": "/opt/lot49/log/${ctx:logFileName}.log",
+                                "name": "${ctx:logFileName}",
+                                "filePattern": "/opt/lot49/log/rotated/type=${ctx:logFileName}/year=$${date:yyyy}/month=$${date:MM}/day=$${date:dd}/hour=$${date:HH}/${ctx:logFileName}.${env:NODE_ID}.${env:SHORT_REGION}.%d{yyyy-MM-dd-HH-mm}.%i.$${date:mm-ss-SSS}.log.gz",
+                                "DelimLayout": {
+                                    "delimiter": "\t",
+                                    "secondaryDelimiter": ",",
+                                    "nullChar": "-",
+                                    "waitForFutures": false
+                                },
+                                "Policies": {
+                                    "SizeBasedTriggeringPolicy": {
+                                        "size": "1024 MB"
+                                    },
+                                    "TimeBasedTriggeringPolicy": {
+                                        "interval": "10",
+                                        "modulate": true
+                                    }
+                                },
+                                "DefaultRolloverStrategy" : { "max" : "10000" }
+                            }
+                        },
+                        {
+                            "RollingFile": {
+                                "fileName": "/opt/lot49/log/${ctx:logFileName}.log",
+                                "name": "${ctx:logFileName}",
+                                "filePattern": "/opt/lot49/log/rotated/type=${ctx:logFileName}/year=$${date:yyyy}/month=$${date:MM}/day=$${date:dd}/hour=$${date:HH}/${ctx:logFileName}.${env:NODE_ID}.${env:SHORT_REGION}.%d{yyyy-MM-dd-HH}.%i.$${date:mm-ss-SSS}.log.gz",
+                                "DelimLayout": {
+                                    "delimiter": "\t",
+                                    "secondaryDelimiter": ",",
+                                    "nullChar": "-",
+                                    "waitForFutures": false
+                                },
+                                "Policies": {
+                                    "SizeBasedTriggeringPolicy": {
+                                        "size": "512 MB"
+                                    },
+                                    "TimeBasedTriggeringPolicy": {
+                                        "interval": "1",
+                                        "modulate": true
+                                    }
+                                },
+                                "DefaultRolloverStrategy" : { "max" : "10000" }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "loggers": {
+            "logger": [
+                {
+                    "name": "com.amazonaws",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "aws"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "jetty",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "jetty"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "main",
+                    "level": "warn",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "main"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                				{
+					"name": "access",
+					"level": "info",
+					"additivity": "false",
+					"property": 
+					[
+						{
+							"name": "logFileName",
+							"value": "access"
+						}
+					],
+
+					"AppenderRef": 
+					{
+						"ref": "Routing"
+					}
+				},
+                {
+                    "name": "urls",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "urls"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "request",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "request"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "session",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "session"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "bid",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "bid"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "win",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "win"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "proust",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "proust"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "pseudowin",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "pseudowin"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+				{
+					"name": "abtestassignment",
+					"level": "info",
+					"additivity": "false",
+					"property": 
+					[
+						{
+							"name": "logFileName",
+							"value": "abtestassignment"
+						}
+					],
+
+					"AppenderRef": 
+					{
+						"ref": "Routing"
+					}
+				},
+                {
+                    "name": "impression",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "impression"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "click",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "click"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "lost",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "lost"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "aggregate",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "aggregate"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "rawrequest",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "rawrequest"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "response",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "response"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "optout",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "optout"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "monitoring",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "monitoring"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                },
+                {
+                    "name": "com.hazelcast",
+                    "level": "info",
+                    "additivity": "false",
+                    "property": [
+                        {
+                            "name": "logFileName",
+                            "value": "hazelcast"
+                        }
+                    ],
+                    "AppenderRef": {
+                        "ref": "Routing"
+                    }
+                }
+            ],
+            "root": {
+                "level": "FATAL",
+                "AppenderRef": {
+                    "ref": "STDERR"
+                }
+            }
+        }
+    }
+}

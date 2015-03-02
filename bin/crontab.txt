@@ -1,0 +1,5 @@
+*/5 * * * * /opt/lot49/bin/upload.sh 2>&1 >> /opt/lot49/log/upload.log
+* * * * * /opt/lot49/bin/updateAds.sh > /opt/lot49/log/updateAds.log 2>> /opt/lot49/log/updateAdsErrors.log
+* 1 * * * /opt/lot49/bin/updateData.sh > /opt/lot49/log/updateData.log 2>> /opt/lot49/log/updateDataErrors.log
+* * * * * /usr/sbin/logrotate /etc/logrotate.d/nginx
+* * * * * /opt/lot49/bin/bidder_count.sh > /opt/lot49/log/bidderCount.log 2>&1
